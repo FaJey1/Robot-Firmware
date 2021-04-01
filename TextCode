@@ -46,7 +46,7 @@ class DriveTo // реализация управления гусеницами 
   public: 
   int LetsGo()
   {
-    return 
+    return 0;
   }
 };
 
@@ -80,8 +80,8 @@ void loop()
     ButtonRightLeft2=Console.read();
     ButtonUpDown=Console.read();
      // вызов методов для обновления угла поворота каждого сервопривода
-    angleNowRightLeft1=HeadServo.headRotateRightLeft(ButtonRightLeft1, angleRightLeft1);
-    angleNowRightLeft2=HeadServo.headRotateRightLeft(ButtonRightLeft2, angleRightLeft2); 
+    angleNowRightLeft1=HeadServo.headRotateRightLeft(ButtonRightLeft1, angleNowRightLeft1);
+    angleNowRightLeft2=HeadServo.headRotateRightLeft(ButtonRightLeft2, angleNowRightLeft2); 
     angleNowUpDown=HeadServo.headRotateRightLeft(ButtonUpDown, angleNowUpDown);
     // поворачиваем сервопривод, ждём 150 ms
     servoHeadRotateRightLeft1.write(angleNowRightLeft1);
