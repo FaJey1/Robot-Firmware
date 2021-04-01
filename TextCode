@@ -79,7 +79,7 @@ void loop()
     ButtonRightLeft1=Console.read();
     ButtonRightLeft2=Console.read();
     ButtonUpDown=Console.read();
-     // вызов методов для обновления угла поворота каждого сервопривода
+    // вызов методов для обновления угла поворота каждого сервопривода
     angleNowRightLeft1=HeadServo.headRotateRightLeft(ButtonRightLeft1, angleNowRightLeft1);
     angleNowRightLeft2=HeadServo.headRotateRightLeft(ButtonRightLeft2, angleNowRightLeft2); 
     angleNowUpDown=HeadServo.headRotateRightLeft(ButtonUpDown, angleNowUpDown);
