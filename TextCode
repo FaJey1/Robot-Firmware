@@ -1,0 +1,92 @@
+#include <Servo.h> 
+#include <Console.h>
+Servo servoHeadRotateRightLeft1, servoHeadRotateRightLeft2,servoHeadRotateUpDown;
+char ButtonRightLeft1; // переменная, куда записывается байт, присланный от консоли (значение клавиши)
+char ButtonRightLeft2;
+char ButtonUpDown;
+int angleNowRightLeft1=90;
+int angleNowRightLeft2=90;
+int angleNowUpDown=45;
+
+class HeadRotate // реализация изменения угла поворота
+{
+  private:
+  int angle;
+  public:
+  int angleNow // модификатор доступа public т.к. меняем из вне
+  int headRotateRightLeft(char Button, int angleNow)
+  {
+    angle=10;
+    if( Button == 'R' || Button == 'T' && (angleNow!=0 ||angleNow!=180) )
+  {
+    angleNow-=angle;
+  }
+  if( Button == 'F' ||  Button == 'G' && (angleNow!=0 ||angleNow!=180) )
+  {
+    angleNow+=angle;
+  }
+    return angleNow;
+  }
+  int headRotateUpDown(char Button, int angleNow)
+  {
+    angle=10;
+    if( Button == 'Y' && (angleNow!=45 ||angleNow!=175) )
+  {
+    angleNow-=angle;
+  }
+  if( Button == 'U' && (angleNow!=45 ||angleNow!=175) )
+  {
+    angleNow+=angle;
+  }
+    return angleNow;
+  }
+};
+class DriveTo // реализация управления гусеницами робота
+{
+  public: 
+  int LetsGo
+  {
+    return 
+  }
+};
+
+class HandsMove : public HeadRotate // реализация манипуляторов робота
+{
+  
+};
+
+class SoundVoice // реализация речи робота
+{
+  
+};
+
+void setup() 
+{
+  Bridge.begin();   // инициализируем Bridge
+  Console.begin();  // инициализируем Console
+  // Присвоение цифровых пинов объектам класса Servo
+  servoHeadRotateRightLeft1.attach(2);
+  servoHeadRotateRightLeft2.attach(3);
+  servoHeadRotateUpDown.attach(4);
+}
+
+void loop() 
+{
+  HeadRotate HeadServo;
+  if (Console.available() > 0) // Проверяем, пришли ли от консоли какие-нибудь данные:
+  {
+    // читаем клавишу, введенную с клавиатуры, ждём 150 ms 
+    ButtonRightLeft1=Console.read();
+    ButtonRightLeft2=Console.read();
+    ButtonUpDown=Console.read();
+     // вызов методов для обновления угла поворота каждого сервопривода
+    angleNowRightLeft1=HeadServo.headRotateRightLeft(ButtonRightLeft1, angleRightLeft1);
+    angleNowRightLeft2=HeadServo.headRotateRightLeft(ButtonRightLeft2, angleRightLeft2); 
+    angleNowUpDown=HeadServo.headRotateRightLeft(ButtonUpDown, angleNowUpDown);
+    // поворачиваем сервопривод, ждём 150 ms
+    servoHeadRotateRightLeft1.write(angleNowRightLeft1);
+    servoHeadRotateRightLeft2.write(angleNowRightLeft2);
+    servoHeadRotateUpDown.write(angleNowUpDown);
+    delay(150);
+  }
+} 
