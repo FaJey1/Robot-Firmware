@@ -13,7 +13,7 @@ class HeadRotate // реализация изменения угла повор�
   private:
   int angle;
   public:
-  int angleNow // модификатор доступа public т.к. меняем из вне
+  int angleNow; // модификатор доступа public т.к. меняем из вне
   int headRotateRightLeft(char Button, int angleNow)
   {
     angle=10;
